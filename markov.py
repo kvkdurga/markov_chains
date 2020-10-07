@@ -75,8 +75,8 @@ def make_chains(text_string):
     #print('{} and {}\n'.format(key_words, value_words))
     return chains
 
-words = open_and_read_file("green-eggs.txt")
-print(make_chains(words))
+#words = open_and_read_file("green-eggs.txt")
+#print(make_chains(words))
 
 def make_text(chains):
     """Return text from chains."""
@@ -84,11 +84,21 @@ def make_text(chains):
     words = []
 
     # your code goes here
+    dict_key = choice(list(chains.keys()))
+    #print(dict_key)
+    words = [dict_key[0], dict_key[1]]
+    #print(words)
+    word = choice(chains[dict_key])
+    #print(word)
+    while word is not None:
+        dict_key = (dict_key[1], word)
+        words.append(word)
+        word = choice(chains[dict_key])
 
     return ' '.join(words)
 
 
-input_path = 'green-eggs.txt'
+input_path = 'gettysburg.txt'
 
 # Open the file and turn it into one long string
 input_text = open_and_read_file(input_path)
